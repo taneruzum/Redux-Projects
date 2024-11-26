@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* LIGHT THEME */
+    /* Background Colors */
+    --bg-background: 0, 0%, 95%;
+    --bg-primary: 0, 0%, 92%;
+    --bg-secondary: 0, 0%, 88%;
+    --bg-third: 0, 0%, 60%;
+
+    /* Text Colors  */
+    --text-primary: 0, 0%, 5%;
+    --text-secondary: 0, 0%, 10%;
+    --text-third: 0, 0%, 15%;
+
+    /* LevelColours */
+    --custom-green: 112, 80%, 48%;
+    --custom-blue: 217, 91%, 59%;
+    --custom-yellow: 45, 93%, 47%;
+    --custom-red: 0, 84%, 60%;
+
+    /* Custom Shadow */
+    --custom-shadow: 0, 0%, 0%, 0.25;
+  }
+
+  .dark {
+    /* DARK THEME */
+    /* Background Colors */
+    --bg-background: 0, 0%, 5%;
+    --bg-primary: 0, 0%, 10%;
+    --bg-secondary: 0, 0%, 15%;
+    --bg-third: 0, 0%, 64%;
+
+    /* Text Colors */
+    --text-primary: 0, 0%, 95%;
+    --text-secondary: 0, 0%, 88%;
+    --text-third: 0, 0%, 78%;
+
+    /* LevelColours */
+    --custom-green: 120, 60%, 50%;
+    --custom-blue: 210, 100%, 50%;
+    --custom-yellow: 40, 100%, 50%;
+    -custom-red: 0, 100%, 50%;
+
+    /* Custom Shadow */
+    --custom-shadow: 0, 0%, 30%, 0.25;
+  }
+}
+
+*{
+  @apply transition-colors duration-300
+}
+@layer utilities {
+  .duration-override {
+    transition-duration: 0ms !important;
+  }
+}
+
+
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--background);
+}
+
+.custom-shadow{
+  box-shadow: inset 0px -3px 4px hsla(var(--custom-shadow));
+}
