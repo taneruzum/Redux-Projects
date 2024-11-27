@@ -1,6 +1,6 @@
-"use client"
-import { addTodo } from "@/lib/features/Todo/todoSlice";
-import { useAppDispatch, useAppSelector } from "@/lib/hook"
+"use client";
+import { addTodo, doneControl, removeTodo } from "@/lib/features/Todo/todoSlice"; // Redux Actions
+import { useAppDispatch, useAppSelector } from "@/lib/hook";
 import clsx from "clsx";
 import { useState } from "react";
 import { MdDone } from "react-icons/md";
@@ -10,7 +10,7 @@ export default function TodoPage() {
     const [inputValue, setInputValue] = useState("");
 
     const dispatch = useAppDispatch();
-    const ToDoList = useAppSelector(state => state.todosSlice.todos);
+    const ToDoList = useAppSelector((state) => state.todosSlice.todos);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
@@ -28,9 +28,19 @@ export default function TodoPage() {
         }
     };
 
+    const toggleDone = (id: number) => {
+        dispatch(doneControl(id));
+    };
+
+    const deleteTodo = (id: number) => {
+        dispatch(removeTodo(id));
+    };
+
     return (
-        <div className='w-full flex flex-col items-center gap-10'>
-            <h1 className='text-3xl text-primary font-bold tracking-wide'>TO DO LIST APPLICATION</h1>
+        <div className="w-full flex flex-col items-center gap-10">
+            <h1 className="text-3xl text-primary font-bold tracking-wide">
+                TO DO LIST APPLICATION
+            </h1>
             <section className="w-60 min-h-80">
                 <input
                     type="text"
@@ -44,15 +54,25 @@ export default function TodoPage() {
                     {ToDoList.map((todo) => (
                         <li
                             key={todo.id}
-                            className={clsx(" flex items-center justify-between w-full pl-3 pr-2 p-1.5 border border-secondary rounded font-medium text-sm text-primary hover:bg-secondary/60 ", {
-                                "line-through": todo.isDone,
-                            })}>
-                            <span className="max-w-36 overflow-hidden text-ellipsis">{todo.title}</span>
+                            className={clsx(
+                                "flex items-center justify-between w-full pl-3 pr-2 p-1.5 border border-secondary rounded font-medium text-base text-primary hover:bg-secondary/60",)}
+                        >
+                            <span className={clsx("max-w-36 overflow-hidden text-ellipsis",
+                                {
+                                    "line-through opacity-55": todo.isDone,
+                                }
+                            )}>
+                                {todo.title}
+                            </span>
                             <div className="flex items-center gap-2">
                                 <MdDone
-                                    className="flex-shrink-0 size-6 text-secondary/30 duration-override hover:text-green-500 cursor-pointer" />
+                                    className="flex-shrink-0 size-6 text-secondary/30 duration-override hover:text-green-500 cursor-pointer"
+                                    onClick={() => toggleDone(todo.id)}
+                                />
                                 <TiDelete
-                                    className="flex-shrink-0 size-6 text-secondary/30 duration-override hover:text-red-500 cursor-pointer" />
+                                    className="flex-shrink-0 size-6 text-secondary/30 duration-override hover:text-red-500 cursor-pointer"
+                                    onClick={() => deleteTodo(todo.id)}
+                                />
                             </div>
                         </li>
                     ))}

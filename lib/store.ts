@@ -3,6 +3,7 @@ import themeSlice from "./features/Theme/themeSlice";
 import counterSlice from "./features/Counter/counterSlice";
 import modalSlice from "./features/Modal/modalSlice";
 import todosSlice from "./features/Todo/todoSlice";
+import addProductSlice from "./features/AddToCart/addProductSlice";
 
 export const GlobalStore = configureStore({
     reducer:{
@@ -10,6 +11,7 @@ export const GlobalStore = configureStore({
         counterSlice,
         modalSlice,
         todosSlice,
+        addProductSlice,
     },
 })
 

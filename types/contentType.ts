@@ -13,3 +13,17 @@ export interface IContent{
     degree:degreeType
     url:string
 }
+
+export interface Product {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  imageUrl: string;
+}
+
+export interface ICart {
+  productTitle: string;
+  productPrice: number;
+  quantity: number;  
+}

@@ -1,7 +1,7 @@
 "use client"
 import ContentBox from "@/components/ContentBox";
 import ToggleThemeButton from "@/components/ThemeToggle";
-import { ContentData } from "@/mock/mockContent";
+import { ContentData } from "@/constants/homeContent";
 
 export default function Home() {
 
