@@ -16,6 +16,7 @@ This project showcases various examples of using Redux with Next.js and TypeScri
 1. **Counter Application** - Basic
 2. **Modal Open/Close** - Basic
 3. **Todo List Application** - Basic
+4. **Add Product To Cart** - intermediate 
 
 ## Bonus Projects
 1. **Theme Toggle** - Basic
